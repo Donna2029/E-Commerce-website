@@ -1,0 +1,142 @@
+E-commerce website Source code
+
+step 1: create the app
+ 
+         npx create-react-app ecommerce-site
+         cd ecommerce-site
+
+step 2: open the folder in the visual studio code and click the src file and create the new files
+
+      > create header.js file
+
+       import React from 'react';
+import './Header.css';
+
+const Header = () => {
+  return (
+    <header className="header">
+      <h1>E-Commerce Site</h1>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>Products</li>
+          <li>Cart</li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
+
+    > create footer.js file
+
+import React from 'react';
+import './Footer.css';
+
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <p>&copy; 2024 E-Commerce Site. All rights reserved.</p>
+    </footer>
+  );
+};
+
+export default Footer;
+
+   > create product.js file
+
+import React from 'react';
+import './Product.css';
+
+const Product = ({ product }) => {
+  return (
+    <div className="product">
+      <img src={product.image} alt={product.name} />
+      <h2>{product.name}</h2>
+      <p>${product.price}</p>
+      <button>Add to Cart</button>
+    </div>
+  );
+};
+
+export default Product;
+
+   > create productList.js file
+
+import React from 'react';
+import Product from './Product';
+
+const products = [
+  { id: 1, name: 'Product 1', price: 29.99, image: 'https://via.placeholder.com/150' },
+  { id: 2, name: 'Product 2', price: 39.99, image: 'https://via.placeholder.com/150' },
+  { id: 3, name: 'Product 3', price: 49.99, image: 'https://via.placeholder.com/150' },
+];
+
+const ProductList = () => {
+  return (
+    <div className="product-list">
+      {products.map(product => (
+        <Product key={product.id} product={product} />
+      ))}
+    </div>
+  );
+};
+
+export default ProductList;
+
+   >create App.js file
+
+import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ProductList from './components/ProductList';
+import './App.css';
+
+const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <main>
+        <ProductList />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default App;
+
+   > create App.css file
+
+.App {
+  text-align: center;
+}
+
+.header, .footer {
+  background-color: #282c34;
+  color: white;
+  padding: 1rem;
+}
+
+.product-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+}
+
+.product img {
+  max-width: 100%;
+}
+
+Step 3: npm start
+
